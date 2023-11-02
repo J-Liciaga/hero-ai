@@ -1,0 +1,68 @@
+{
+	"name": "pwa",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "apps/pwa",
+	"projectType": "application",
+	"targets": {
+		"build": {
+			"executor": "@nx/next:build",
+			"outputs": ["{options.outputPath}"],
+			"defaultConfiguration": "production",
+			"options": {
+				"outputPath": "dist/apps/pwa"
+			},
+			"configurations": {
+				"development": {
+					"outputPath": "apps/pwa"
+				},
+				"production": {}
+			}
+		},
+		"serve": {
+			"executor": "@nx/next:server",
+			"defaultConfiguration": "development",
+			"options": {
+				"buildTarget": "pwa:build",
+				"dev": true
+			},
+			"configurations": {
+				"development": {
+					"buildTarget": "pwa:build:development",
+					"dev": true
+				},
+				"production": {
+					"buildTarget": "pwa:build:production",
+					"dev": false
+				}
+			}
+		},
+		"export": {
+			"executor": "@nx/next:export",
+			"options": {
+				"buildTarget": "pwa:build:production"
+			}
+		},
+		"test": {
+			"executor": "@nx/jest:jest",
+			"outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+			"options": {
+				"jestConfig": "apps/pwa/jest.config.ts",
+				"passWithNoTests": true
+			},
+			"configurations": {
+				"ci": {
+					"ci": true,
+					"codeCoverage": true
+				}
+			}
+		},
+		"lint": {
+			"executor": "@nx/eslint:lint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["apps/pwa/**/*.{ts,tsx,js,jsx}"]
+			}
+		}
+	},
+	"tags": []
+}
