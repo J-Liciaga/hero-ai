@@ -1,0 +1,34 @@
+type User {
+  id: String!
+  clerkId: String!
+  fullname: String!
+  username: String!
+  email: String!
+  phoneNumber: String!
+  # calendars: [Calendar!]!
+  # habits: [Habits!]!
+  # kanban: [Board!]!
+}
+
+# type ServerResponse {
+#   code: String!
+#   message: String!
+# }
+
+type Query {
+  # user
+  getUser(id: ID!): User
+}
+
+type Mutation {
+  # user
+  createUser(input: CreateUserInput): User
+}
+
+input CreateUserInput {
+  clerkId: String!
+  fullname: String!
+  username: String!
+  email: String!
+  phoneNumber: String!
+}

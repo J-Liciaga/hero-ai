@@ -15,9 +15,9 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
+			"@lucky-ui/*": ["libs/lucky-ui/src/*"],
 			"@pwa/core/*": ["apps/pwa/core/*"],
-			"@web/core/*": ["apps/web/core/*"],
-			"@lucky-ui/*": ["libs/lucky-ui/src/*"]
+			"@web/core/*": ["apps/web/core/*"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]

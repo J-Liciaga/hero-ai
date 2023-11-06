@@ -139,3 +139,4 @@ apps/mobile-e2e/artifacts
 **/.env.test
 **/.env.prod
 .nx/cache
+apps/api/apps/mobile-e2e/artifacts
